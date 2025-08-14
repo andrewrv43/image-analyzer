@@ -1,0 +1,13 @@
+# Entornos / dependencias
+__pycache__/
+*.pyc
+
+# Entornos locales
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Docker artefacts
+*.log
