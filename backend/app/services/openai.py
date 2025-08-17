@@ -29,17 +29,24 @@ def _client() -> OpenAI:
 def _call_model(b64: str, question: str) -> str:
 	client = _client()
 	response = client.responses.create(
-		model="gpt-4.1",
+		model=os.getenv("OPENAI_MODEL"),
+		instructions=question,
 		input=[
+			{
+				"role": "developer",
+				"content": question,
+			},
 			{
 				"role": "user",
 				"content": [
-					{"type": "input_text", "text": question},
 					{"type": "input_image", "image_url": f"data:image/jpeg;base64,{b64}"},
 				],
 			}
 		],
+		text={"format": {"type": "json_object"}},
+		temperature=0.7,
 	)
+	print(f"OpenAI response: {response}")
 	return response.output_text
 
 

@@ -1,6 +1,13 @@
 from flask import Blueprint, request, jsonify, current_app
 from ..validation import validate_image
 from ..services.openai import analyze_image_bytes
+import json
+import os
+
+# Cargar prompts.json al iniciar el módulo
+PROMPTS_PATH = os.path.join(os.path.dirname(__file__), "prompts.json")
+with open(PROMPTS_PATH, "r", encoding="utf-8") as f:
+    PROMPTS = json.load(f)
 
 upload_bp = Blueprint("upload", __name__, url_prefix="/api")
 
@@ -33,7 +40,7 @@ def upload_image():
         # Leer bytes completos (limitado por MAX_CONTENT_LENGTH ya aplicado por Flask)
         data = file.read()
         file.stream.seek(0)
-        description = analyze_image_bytes(data, "Describe la imagen brevemente en español")
+        description = analyze_image_bytes(data, PROMPTS["analyze_img_v2"])
     except Exception as e:  # pragma: no cover - dependencias externas
         # Log a consola (docker logs) con stacktrace
         current_app.logger.exception(
