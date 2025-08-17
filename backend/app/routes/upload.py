@@ -40,7 +40,8 @@ def upload_image():
         # Leer bytes completos (limitado por MAX_CONTENT_LENGTH ya aplicado por Flask)
         data = file.read()
         file.stream.seek(0)
-        description = analyze_image_bytes(data, PROMPTS["analyze_img_v2"])
+        prompt_key = os.environ.get("PROMPT_KEY", "analyze_img_v3")
+        description = analyze_image_bytes(data, PROMPTS[prompt_key])
     except Exception as e:  # pragma: no cover - dependencias externas
         # Log a consola (docker logs) con stacktrace
         current_app.logger.exception(
