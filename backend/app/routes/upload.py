@@ -12,7 +12,7 @@ with open(PROMPTS_PATH, "r", encoding="utf-8") as f:
 upload_bp = Blueprint("upload", __name__, url_prefix="/api")
 
 
-@upload_bp.post("/upload-image")
+@upload_bp.post("/analyze")
 def upload_image():
     """Endpoint que recibe y valida una imagen.
 
