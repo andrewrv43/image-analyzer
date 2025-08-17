@@ -11,3 +11,44 @@ __pycache__/
 
 # Docker artefacts
 *.log
+
+# Compiled output
+/frontend/image-analyzer-frontend/dist
+/frontend/image-analyzer-frontend/tmp
+/frontend/image-analyzer-frontend/out-tsc
+/frontend/image-analyzer-frontend/bazel-out
+
+# Node
+/frontend/image-analyzer-frontend/node_modules
+/frontend/image-analyzer-frontend/npm-debug.log
+/frontend/image-analyzer-frontend/yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/frontend/image-analyzer-frontend/.angular/cache
+/frontend/image-analyzer-frontend/.sass-cache/
+/frontend/image-analyzer-frontend/connect.lock
+/frontend/image-analyzer-frontend/coverage
+/frontend/image-analyzer-frontend/libpeerconnection.log
+/frontend/image-analyzer-frontend/testem.log
+/frontend/image-analyzer-frontend/typings
+
+# System files
+.DS_Store
+Thumbs.db

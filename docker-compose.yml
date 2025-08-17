@@ -7,3 +7,8 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
+  frontend:
+    build: ./frontend/image-analyzer-frontend
+    ports:
+      - "80:80"
+    restart: unless-stopped

@@ -1,10 +1,14 @@
 from flask import Flask, jsonify
 from .config import Config
+from flask_cors import CORS  # type: ignore
 
 
 def create_app(config_class: type[Config] = Config) -> Flask:
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    # CORS sencillo (en producción ajustar orígenes permitidos)
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     # Register blueprints
     from .routes.upload import upload_bp
