@@ -50,8 +50,10 @@ Solo se documentan las usadas funcionalmente por la aplicación:
 Ejemplo `.env`:
 ```
 OPENAI_API_KEY=sk-xxxxx
-OPENAI_MODEL=gpt-4o-mini
-PROMPT_KEY=analyze_img_v5
+## Elige uno de los modelos soportados
+# OPENAI_MODEL=gpt-5-nano   # Mejor calidad si tu cuenta tiene acceso
+OPENAI_MODEL=gpt-4o-mini     # Opción por defecto
+PROMPT_KEY=analyze_img_v6
 ```
 
 ## 5. Backend
@@ -104,6 +106,11 @@ docker compose down
 
 ## 10. Prompts
 Editar `backend/app/routes/prompts.json` y cambiar `PROMPT_KEY` en `.env` para seleccionar otro. Cada entrada debe devolver JSON coherente para que el frontend lo parsee.
+
+Recomendación: usar `PROMPT_KEY=analyze_img_v6` (versión mejorada) porque:
+- Ajusta instrucciones para respuestas más consistentes en JSON.
+- Mejora la extracción de etiquetas (normaliza a minúsculas y sin espacios extra).
+- Reduce verbosidad en la descripción manteniendo detalles clave.
 
 ## 11. Contacto
 GitHub: [andrewrv43](https://github.com/andrewrv43)
